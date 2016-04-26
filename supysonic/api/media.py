@@ -48,6 +48,8 @@ def stream_media():
     maxBitRate, format, timeOffset, size, estimateContentLength, client = map(request.args.get, [ 'maxBitRate', 'format', 'timeOffset', 'size', 'estimateContentLength', 'c' ])
     if format:
         format = format.lower()
+    else:
+        format = config.get('transcoding', 'default_format')
 
     src_suffix = res.suffix()
     dst_suffix = res.suffix()
